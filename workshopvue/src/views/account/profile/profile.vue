@@ -1,0 +1,346 @@
+<template>
+  <div class="profile-page">
+    <div class="profile-container">
+      <aside class="profile-sidebar">
+        <div class="user-info">
+          <div class="avatar-wrapper">
+            <img
+              src="https://ui-avatars.com/api/?name=User&background=ff4d4f&color=fff&size=128"
+              alt="Avatar"
+              class="avatar"
+            />
+            <button class="edit-avatar">
+              <i class="fas fa-camera"></i>
+            </button>
+          </div>
+          <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+          <p class="user-role">User</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="active">
+            <i class="fas fa-user"></i> Personal Info
+          </a>
+
+          <router-link to="/myorder">
+            <i class="fas fa-shopping-bag"></i> My Orders
+          </router-link>
+
+          <a href="#"> <i class="fas fa-heart"></i> Wishlist </a>
+
+          <a href="#"> <i class="fas fa-cog"></i> Settings </a>
+
+          <button @click="handleLogout" class="logout-link">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </nav>
+      </aside>
+
+      <main class="profile-main">
+        <header class="main-header">
+          <h2>Account Settings</h2>
+          <p>Manage your profile information and account preferences.</p>
+        </header>
+
+        <section class="info-grid">
+          <div class="info-card">
+            <div class="card-header">
+              <h3>Personal Information</h3>
+              <button class="btn-edit" @click="$router.push('/editprofile')">
+                Edit
+              </button>
+            </div>
+
+            <div class="card-body">
+              <div class="detail-item">
+                <label>Username</label>
+                <span>{{ user.username }}</span>
+              </div>
+              <div class="detail-item">
+                <label>Full Name</label>
+                <span>{{ user.firstname }} {{ user.lastname }}</span>
+              </div>
+              <div class="detail-item">
+                <label>Email Address</label>
+                <span>{{ user.email }}</span>
+              </div>
+              <div class="detail-row">
+                <div class="detail-item">
+                  <label>Gender</label>
+                  <span>{{ user.gender || "Not specified" }}</span>
+                </div>
+                <div class="detail-item">
+                  <label>Age</label>
+                  <span>{{ user.age || "-" }} years old</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="card-header">
+              <h3>Security</h3>
+            </div>
+            <div class="card-body">
+              <div class="detail-item">
+                <label>Password</label>
+                <span>••••••••••••</span>
+                <button class="text-link">Change Password</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      // จำลองข้อมูล (ในหน้างานจริงควรดึงจาก API หรือ Vuex)
+      user: {
+        username: "loading...",
+        firstname: "Guest",
+        lastname: "User",
+        email: "example@store.com",
+        gender: "",
+        age: "",
+      },
+    };
+  },
+  mounted() {
+    this.getUserData();
+  },
+  methods: {
+    async getUserData() {
+      try {
+        const userData = JSON.parse(localStorage.getItem("user"));
+
+        if (!userData) {
+          console.log("No user in localStorage");
+          return;
+        }
+
+        const userId = userData._id;
+
+        const response = await axios.get(
+          `http://localhost:3000/users/${userId}`,
+        );
+
+        this.user = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    handleLogout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      this.$router.push("/login");
+    },
+  },
+};
+</script>
+
+<style scoped>
+.profile-page {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.profile-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+}
+
+/* SIDEBAR */
+.profile-sidebar {
+  width: 280px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 100px;
+  margin: 0 auto 15px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-avatar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.user-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+  color: #111827;
+}
+
+.user-role {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-nav a,
+.logout-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.sidebar-nav a.active {
+  background: rgba(255, 77, 79, 0.1);
+  color: #ff4d4f;
+}
+
+.sidebar-nav a:hover:not(.active) {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.logout-link {
+  margin-top: 20px;
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+  color: #dc2626;
+}
+
+/* MAIN CONTENT */
+.profile-main {
+  flex: 1;
+}
+
+.main-header {
+  margin-bottom: 30px;
+}
+
+.main-header h2 {
+  font-size: 1.875rem;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.main-header p {
+  color: #6b7280;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.btn-edit {
+  padding: 6px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.detail-item {
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  gap: 40px;
+}
+
+.detail-item label {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.detail-item span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.text-link {
+  background: none;
+  border: none;
+  color: #ff4d4f;
+  padding: 0;
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+  }
+  .profile-sidebar {
+    width: 100%;
+  }
+}
+</style>
