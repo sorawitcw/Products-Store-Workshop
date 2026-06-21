@@ -97,15 +97,15 @@ export default {
 .price {
   font-size: 22px;
   font-weight: bold;
-  color: #e53935;
+  color: #4A90E2;
 }
 
 .description {
   font-size: 16px;
-  color: #555;
+  color: #82B1FF;
 }
 
 .text-red {
-  color: red;
+  color: #FF5252;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>API CONNECT</h1>
-    <v-btn color="success" @click="newItem()">newItem</v-btn>
+    <v-btn color="primary" @click="newItem()">newItem</v-btn>
     <v-row>
       <v-col cols="3" v-for="(item, index) in apidata" :key="index">
         <div>
@@ -13,8 +13,8 @@
               {{ item.firstname }} {{ item.lastname }}
             </v-card-title>
             <v-card-actions>
-              <v-btn color="success" @click="editItem(item)">edit</v-btn>
-              <v-btn color="error" @click="deleteItem(item)">delete</v-btn>
+              <v-btn color="primary" @click="editItem(item)">edit</v-btn>
+              <v-btn color="primary" @click="deleteItem(item)">delete</v-btn>
             </v-card-actions>
           </v-card>
         </div>
@@ -73,8 +73,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="error" text @click="closeItem()">cancel</v-btn>
-          <v-btn color="info" text @click="saveSelect()">save</v-btn>
+          <v-btn color="primary" text @click="closeItem()">cancel</v-btn>
+          <v-btn color="primary" text @click="saveSelect()">save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

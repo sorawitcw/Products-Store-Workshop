@@ -5,7 +5,7 @@
         <div class="user-info">
           <div class="avatar-wrapper">
             <img
-              src="https://ui-avatars.com/api/?name=User&background=ff4d4f&color=fff&size=128"
+              src="https://ui-avatars.com/api/?name=User&background=4A90E2&color=fff&size=128"
               alt="Avatar"
               class="avatar"
             />
@@ -148,7 +148,7 @@ export default {
 <style scoped>
 .profile-page {
   min-height: 100vh;
-  background-color: #f3f4f6;
+  background-color: #FFFFFF;
   padding: 40px 20px;
   font-family: "Inter", sans-serif;
 }
@@ -186,7 +186,7 @@ export default {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #fff;
+  border: 4px solid #FFFFFF;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -194,8 +194,8 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: #ff4d4f;
-  color: white;
+  background: #4A90E2;
+  color: #FFFFFF;
   border: none;
   width: 32px;
   height: 32px;
@@ -206,21 +206,36 @@ export default {
 .user-info h3 {
   font-size: 1.25rem;
   margin-bottom: 5px;
-  color: #111827;
+  color: #4A90E2;
 }
 
 .user-role {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #82B1FF;
 }
 
-.sidebar-nav {
+.sidebar-nav a {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #4A90E2;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
-.sidebar-nav a,
+.sidebar-nav a.active {
+  background: rgba(74, 144, 226, 0.1);
+  color: #4A90E2;
+}
+
+.sidebar-nav a:hover:not(.active) {
+  background: #F8FAFC;
+  color: #4A90E2;
+}
+
 .logout-link {
   display: flex;
   align-items: center;
@@ -228,28 +243,18 @@ export default {
   padding: 12px 16px;
   border-radius: 8px;
   text-decoration: none;
-  color: #4b5563;
   font-weight: 500;
   transition: all 0.2s;
-}
-
-.sidebar-nav a.active {
-  background: rgba(255, 77, 79, 0.1);
-  color: #ff4d4f;
-}
-
-.sidebar-nav a:hover:not(.active) {
-  background: #f9fafb;
-  color: #111827;
-}
-
-.logout-link {
   margin-top: 20px;
   border: none;
   background: none;
   width: 100%;
   cursor: pointer;
-  color: #dc2626;
+  color: #EF5350;
+}
+
+.logout-link:hover {
+  background: rgba(239, 83, 80, 0.1);
 }
 
 /* MAIN CONTENT */
@@ -263,12 +268,12 @@ export default {
 
 .main-header h2 {
   font-size: 1.875rem;
-  color: #111827;
+  color: #4A90E2;
   margin-bottom: 8px;
 }
 
 .main-header p {
-  color: #6b7280;
+  color: #82B1FF;
 }
 
 .info-grid {
@@ -290,16 +295,23 @@ export default {
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #F8FAFC;
 }
 
 .btn-edit {
   padding: 6px 16px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #F8FAFC;
   border-radius: 6px;
-  background: white;
+  background: #F8FAFC;
+  color: #4A90E2;
   cursor: pointer;
   font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-edit:hover {
+  background: #4A90E2;
+  color: #FFFFFF;
 }
 
 .detail-item {
@@ -314,20 +326,20 @@ export default {
 .detail-item label {
   display: block;
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #82B1FF;
   margin-bottom: 4px;
 }
 
 .detail-item span {
   font-size: 1rem;
   font-weight: 500;
-  color: #111827;
+  color: #4A90E2;
 }
 
 .text-link {
   background: none;
   border: none;
-  color: #ff4d4f;
+  color: #4A90E2;
   padding: 0;
   margin-left: 15px;
   cursor: pointer;

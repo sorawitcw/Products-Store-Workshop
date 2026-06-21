@@ -117,7 +117,7 @@ export default {
 
 .edit-page{
   min-height:100vh;
-  background:#f5f5f5;
+  background:#FFFFFF;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -128,7 +128,13 @@ export default {
   background:white;
   padding:30px;
   border-radius:12px;
+  border: 1px solid #F8FAFC;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.edit-card h2 {
+  color: #4A90E2;
+  margin-bottom: 20px;
 }
 
 .form-group{
@@ -140,13 +146,24 @@ export default {
 .form-group label{
   font-size:14px;
   margin-bottom:5px;
+  color: #4A90E2;
+  font-weight: 500;
 }
 
 .form-group input,
 .form-group select{
   padding:10px;
-  border:1px solid #ddd;
+  border:1px solid #F8FAFC;
   border-radius:6px;
+  color: #4A90E2;
+  background: #FFFFFF;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  outline: none;
+  border-color: #4A90E2;
 }
 
 .form-row{
@@ -161,20 +178,34 @@ export default {
 }
 
 .btn-save{
-  background:#ff4d4f;
-  color:white;
+  background: #4A90E2;
+  color: #FFFFFF;
   border:none;
   padding:10px 18px;
   border-radius:6px;
   cursor:pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.btn-save:hover {
+  background: #82B1FF;
 }
 
 .btn-cancel{
-  background:#ddd;
-  border:none;
+  background: #F8FAFC;
+  color: #4A90E2;
+  border: none;
   padding:10px 18px;
   border-radius:6px;
   cursor:pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #EF5350;
+  color: #FFFFFF;
 }
 
 </style>

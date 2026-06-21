@@ -73,7 +73,7 @@
 
         <v-card-actions>
           <v-spacer />
-          <v-btn text color="red" @click="dialogHobby = false"> Close </v-btn>
+          <v-btn text color="primary" @click="dialogHobby = false"> Close </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -122,7 +122,7 @@
 
         <v-card-actions>
           <v-spacer />
-          <v-btn text color="red" @click="dialogSkill = false"> Close </v-btn>
+          <v-btn text color="primary" @click="dialogSkill = false"> Close </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -157,7 +157,7 @@
 
         <v-card-actions>
           <v-spacer />
-          <v-btn text color="red" @click="dialogFavorites = false">
+          <v-btn text color="primary" @click="dialogFavorites = false">
             Close
           </v-btn>
         </v-card-actions>
@@ -234,8 +234,8 @@ body {
 .about,
 .contact {
   position: relative;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  color: white;
+  background: #FFFFFF;
+  color: #FFFFFF;
   overflow: hidden;
 }
 
@@ -254,9 +254,9 @@ body {
   top: 50%;
   left: 50%;
   height: 2px;
-  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
+  background: linear-gradient(135deg, #4A90E2, #82B1FF);
   border-radius: 999px;
-  filter: drop-shadow(0 0 6px #699bff);
+  filter: drop-shadow(0 0 6px #4A90E2);
   animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
 }
 
@@ -297,7 +297,7 @@ body {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 50px;
-  color: white;
+  color: #FFFFFF;
 }
 
 .card-grid {
@@ -313,29 +313,29 @@ body {
   cursor: pointer;
   transition: all 0.35s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(74, 144, 226, 0.15);
 }
 
 .info-card h3 {
   margin-top: 20px;
   font-size: 20px;
   font-weight: 600;
-  color: #0f172a;
+  color: #4A90E2;
 }
 
 .info-card p {
   margin-top: 10px;
   font-size: 14px;
-  color: #64748b;
+  color: #82B1FF;
 }
 
 .card-icon {
-  color: #2563eb;
+  color: #4A90E2;
 }
 
 .info-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 20px 40px rgba(74, 144, 226, 0.15);
 }
 
 @media (max-width: 900px) {
@@ -375,7 +375,7 @@ body {
   background: rgba(255, 255, 255, 0.1);
   padding: 40px;
   border-radius: 20px;
-  color: white;
+  color: #FFFFFF;
   backdrop-filter: blur(10px);
   transition: 0.3s;
 }
@@ -403,18 +403,18 @@ body {
 }
 
 .contact-card a {
-  color: #60a5fa;
+  color: #4A90E2;
   text-decoration: none;
   font-weight: 500;
 }
 
 .contact-card a:hover {
-  color: #2563eb;
+  color: #82B1FF;
   text-decoration: underline;
 }
 
 .close-btn {
-  color: #ef4444;
+  color: #4A90E2;
   background: transparent;
   font-weight: 600;
 }

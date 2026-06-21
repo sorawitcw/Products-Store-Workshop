@@ -102,14 +102,17 @@ export default {
 }
 
 .count {
-  background: #f1f3f6;
+  background: #F8FAFC;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 14px;
+  color: #4A90E2;
+  border: 1px solid #F8FAFC;
 }
 
 .order-card {
-  border: 1px solid #e5e7eb;
+  background: #FFFFFF;
+  border: 1px solid #F8FAFC;
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 20px;
@@ -130,18 +133,18 @@ export default {
 
 .order-id {
   font-size: 13px;
-  color: #666;
+  color: #4A90E2;
   margin-left: 6px;
 }
 
 .order-total {
   font-size: 18px;
   font-weight: 600;
-  color: #27ae60;
+  color: #4A90E2;
 }
 
 .items {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #F8FAFC;
   padding-top: 12px;
 }
 
@@ -154,13 +157,13 @@ export default {
 
 .header-row {
   font-weight: 600;
-  color: #888;
+  color: #4A90E2;
 }
 
 .customer {
   margin: 10px 0;
   padding: 8px 12px;
-  background: #f5f7fa;
+  background: #F8FAFC;
   border-radius: 8px;
   font-size: 14px;
 }

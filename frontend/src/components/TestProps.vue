@@ -1,7 +1,7 @@
 <template>
     <div>
     <h1>{{name}}</h1>
-    <v-btn color="success" @click="callMain()">CallMain</v-btn>
+    <v-btn color="primary" @click="callMain()">CallMain</v-btn>
     </div>
 </template>
 

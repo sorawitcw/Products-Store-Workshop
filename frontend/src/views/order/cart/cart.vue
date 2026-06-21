@@ -124,8 +124,8 @@ export default {
         showCancelButton: true,
         confirmButtonText: "ลบสินค้า",
         cancelButtonText: "ยกเลิก",
-        confirmButtonColor: "#e74c3c",
-        cancelButtonColor: "#bdc3c7",
+        confirmButtonColor: "#4A90E2",
+        cancelButtonColor: "#82B1FF",
       });
 
       if (result.isConfirmed) {
@@ -205,10 +205,12 @@ export default {
 }
 
 .item-count {
-  background: #f1f3f6;
+  background: #F8FAFC;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 14px;
+  color: #4A90E2;
+  border: 1px solid #F8FAFC;
 }
 
 .cart-grid {
@@ -222,9 +224,10 @@ export default {
   grid-template-columns: 2fr 1fr 1fr auto;
   align-items: center;
   padding: 20px;
-  background: #ffffff;
+  background: #FFFFFF;
   border-radius: 14px;
   margin-bottom: 15px;
+  border: 1px solid #F8FAFC;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: 0.2s;
 }
@@ -240,7 +243,7 @@ export default {
 
 .cart-info p {
   margin: 4px 0 0;
-  color: #888;
+  color: #4A90E2;
 }
 
 .qty-section {
@@ -254,14 +257,14 @@ export default {
   height: 32px;
   border: none;
   border-radius: 8px;
-  background: #3498db;
-  color: white;
+  background: #4A90E2;
+  color: #FFFFFF;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .qty-section button:hover {
-  background: #2980b9;
+  background: #82B1FF;
 }
 
 .subtotal {
@@ -272,14 +275,15 @@ export default {
   background: transparent;
   border: none;
   font-size: 18px;
-  color: #e74c3c;
+  color: #EF5350;
   cursor: pointer;
 }
 
 .summary-box {
-  background: #ffffff;
+  background: #FFFFFF;
   padding: 25px;
   border-radius: 16px;
+  border: 1px solid #F8FAFC;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   height: fit-content;
 }
@@ -297,15 +301,15 @@ export default {
 .summary-row.total {
   font-weight: 600;
   font-size: 18px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #F8FAFC;
   padding-top: 15px;
 }
 
 .checkout-btn {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: white;
+  background: linear-gradient(135deg, #4A90E2, #82B1FF);
+  color: #FFFFFF;
   border: none;
   border-radius: 12px;
   margin-top: 20px;
@@ -323,7 +327,7 @@ export default {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
-  background: #f1f3f6;
+  background: #FFFFFF;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -343,18 +347,18 @@ export default {
 }
 
 .continue-btn {
-  background: #2980b9;
-  color: #f5f5f5;
-  border: 1px solid #1f6694;
+  background: #4A90E2;
+  color: #FFFFFF;
+  border: 1px solid #4A90E2;
   padding: 10px 16px;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .continue-btn:hover {
-  background: #f5f5f5;
-  color: #2980b9;
-  border: 1px solid #2980b9;
+  background: #FFFFFF;
+  color: #4A90E2;
+  border: 1px solid #4A90E2;
 }
 
 .delete-card {
@@ -388,7 +392,7 @@ export default {
 }
 
 .swal-confirm {
-  background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+  background: linear-gradient(135deg, #4A90E2, #82B1FF) !important;
   border-radius: 10px !important;
   padding: 10px 20px !important;
   font-weight: 600 !important;
@@ -404,10 +408,10 @@ export default {
 }
 
 .swal2-confirm.swal-confirm {
-  background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
-  color: white !important;
+  background: linear-gradient(135deg, #4A90E2, #82B1FF) !important;
+  color: #FFFFFF !important;
   border: none !important;
-  box-shadow: 0 6px 18px rgba(39, 174, 96, 0.4) !important;
+  box-shadow: 0 6px 18px rgba(74, 144, 226, 0.4) !important;
 }
 
 .swal2-confirm.swal-confirm:hover {
