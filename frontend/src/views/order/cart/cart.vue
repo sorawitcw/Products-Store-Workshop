@@ -10,12 +10,6 @@
     <div v-if="cart.length === 0" class="empty-cart">
       <div class="empty-icon">🛍️</div>
       <h2>ไม่มีสินค้าในตะกร้า</h2>
-      <button
-        class="action-btn continue-btn"
-        @click="$router.push('/productview')"
-      >
-        เลือกซื้อสินค้า
-      </button>
     </div>
 
     <div v-else class="cart-grid">
@@ -97,7 +91,7 @@ export default {
 
   methods: {
     saveCart() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.$store.commit("setCart", this.cart);
     },
 
     formatNumber(value) {
@@ -165,7 +159,7 @@ export default {
         });
 
         this.cart = [];
-        localStorage.removeItem("cart");
+        this.$store.commit("setCart", []);
         this.$router.push("/productview");
       } catch (error) {
         console.log(error.response?.data);

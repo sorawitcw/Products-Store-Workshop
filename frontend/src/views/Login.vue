@@ -132,6 +132,7 @@ export default {
           password: this.password,
         });
         localStorage.setItem("userId", res.data.user._id);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("token", res.data.token);
         this.$router.push("/productview");
       } catch (error) {

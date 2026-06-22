@@ -77,11 +77,27 @@ export default {
 
     async getUser() {
       try {
-        const userData = JSON.parse(localStorage.getItem("user"));
-        const userId = userData._id;
+        let userId = "";
+        const userDataStr = localStorage.getItem("user");
+        if (userDataStr) {
+          try {
+            const userData = JSON.parse(userDataStr);
+            userId = userData._id;
+          } catch (e) {
+            console.error("Error parsing user data:", e);
+          }
+        }
+
+        if (!userId) {
+          userId = localStorage.getItem("userId");
+        }
+
+        if (!userId) {
+          console.log("No user ID found in localStorage");
+          return;
+        }
 
         const res = await axios.get(`http://localhost:3000/users/${userId}`);
-
         this.user = res.data;
 
       } catch (err) {
@@ -91,17 +107,41 @@ export default {
 
     async updateProfile() {
       try {
+        let userId = "";
+        const userDataStr = localStorage.getItem("user");
+        if (userDataStr) {
+          try {
+            const userData = JSON.parse(userDataStr);
+            userId = userData._id;
+          } catch (e) {
+            console.error("Error parsing user data:", e);
+          }
+        }
 
-        const userData = JSON.parse(localStorage.getItem("user"));
-        const userId = userData._id;
+        if (!userId) {
+          userId = localStorage.getItem("userId");
+        }
+
+        if (!userId) {
+          console.log("No user ID found in localStorage");
+          return;
+        }
+
+        const updateData = { ...this.user };
+        delete updateData._id;
+        delete updateData.__v;
+        delete updateData.createdAt;
+        delete updateData.updatedAt;
 
         await axios.put(
           `http://localhost:3000/users/${userId}`,
-          this.user
+          updateData
         );
 
-        alert("Profile updated");
+        // Also update local storage if user exists
+        localStorage.setItem("user", JSON.stringify(this.user));
 
+        alert("Profile updated");
         this.$router.push("/profile");
 
       } catch (err) {
