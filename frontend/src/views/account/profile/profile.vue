@@ -26,10 +26,6 @@
             <i class="fas fa-shopping-bag"></i> My Orders
           </router-link>
 
-          <a href="#"> <i class="fas fa-heart"></i> Wishlist </a>
-
-          <a href="#"> <i class="fas fa-cog"></i> Settings </a>
-
           <button @click="handleLogout" class="logout-link">
             <i class="fas fa-sign-out-alt"></i> Logout
           </button>
@@ -118,17 +114,28 @@ export default {
   methods: {
     async getUserData() {
       try {
-        const userData = JSON.parse(localStorage.getItem("user"));
+        let userId = "";
+        const userDataStr = localStorage.getItem("user");
+        if (userDataStr) {
+          try {
+            const userData = JSON.parse(userDataStr);
+            userId = userData._id;
+          } catch (e) {
+            console.error("Error parsing user data:", e);
+          }
+        }
 
-        if (!userData) {
+        if (!userId) {
+          userId = localStorage.getItem("userId");
+        }
+
+        if (!userId) {
           console.log("No user in localStorage");
           return;
         }
 
-        const userId = userData._id;
-
         const response = await axios.get(
-          `http://localhost:3000/users/${userId}`,
+          `http://localhost:3000/users/${userId}`
         );
 
         this.user = response.data;
@@ -139,6 +146,7 @@ export default {
     handleLogout() {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      localStorage.removeItem("userId");
       this.$router.push("/login");
     },
   },

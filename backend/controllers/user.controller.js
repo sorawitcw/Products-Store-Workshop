@@ -45,11 +45,18 @@ exports.createUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
+    const updateData = { ...req.body };
+    
+    // Remove immutable / metadata fields that MongoDB prevents from being updated
+    delete updateData._id;
+    delete updateData.__v;
+    delete updateData.createdAt;
+    delete updateData.updatedAt;
 
     const user = await userSchema.findByIdAndUpdate(
       id,
-      req.body,          // รับทุก field ที่ส่งมา
-      { new: true }      // คืนค่าหลังอัปเดต
+      updateData,
+      { new: true }
     );
 
     if (!user) {
@@ -59,7 +66,7 @@ exports.updateUser = async (req, res) => {
     res.json(user);
   } catch (error) {
     res.status(400).json({
-      message: "Invalid ID format",
+      message: error.message || "Failed to update profile",
     });
   }
 };
